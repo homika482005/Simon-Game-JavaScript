@@ -9,7 +9,7 @@ let level = 0;
 const h2 = document.querySelector("h2");
 
 // Start Game
-document.addEventListener("keypress", () => {
+document.addEventListener("keydown", () => {
     if (!started) {
         started = true;
         levelUp();
@@ -56,6 +56,7 @@ function checkAns(idx) {
 
 // Button Click
 function btnPress() {
+    if(! started) return;
     const btn = this;
     flash(btn, "userflash");
 
