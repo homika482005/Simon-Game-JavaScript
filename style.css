@@ -19,6 +19,27 @@ h2 {
     margin: 10px 0;
 }
 
+/* Start Button */
+#start-btn {
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+    background-color: #eeeeee;
+}
+
+#start-btn:active {
+    transform: scale(0.95);
+}
+
 /* Score */
 .score-container {
     display: flex;
@@ -94,6 +115,7 @@ h2 {
 
 /* Mobile Responsive */
 @media (max-width: 500px) {
+
     h1 {
         font-size: 28px;
     }
@@ -101,6 +123,11 @@ h2 {
     h2 {
         font-size: 20px;
         padding: 0 10px;
+    }
+
+    #start-btn {
+        font-size: 16px;
+        padding: 10px 20px;
     }
 
     .score-container {
