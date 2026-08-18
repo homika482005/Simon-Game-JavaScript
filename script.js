@@ -10,13 +10,21 @@ let score = 0;
 let highScore = localStorage.getItem("simonHighScore") || 0;
 
 const h2 = document.querySelector("h2");
+const startBtn = document.querySelector("#start-btn");
 const scoreDisplay = document.querySelector("#score");
 const highScoreDisplay = document.querySelector("#high-score");
 
 highScoreDisplay.innerText = highScore;
 
-// Start Game
+// Start Game with Keyboard
 document.addEventListener("keydown", () => {
+    if (!started) {
+        startGame();
+    }
+});
+
+// Start Game with Button
+startBtn.addEventListener("click", () => {
     if (!started) {
         startGame();
     }
@@ -32,6 +40,8 @@ function startGame() {
 
     scoreDisplay.innerText = score;
     h2.innerText = "Get Ready...";
+
+    startBtn.style.display = "none";
 
     setTimeout(levelUp, 500);
 }
@@ -76,6 +86,7 @@ async function playSequence() {
     }
 
     acceptingInput = true;
+    h2.innerText = `Level ${level} - Your Turn`;
 }
 
 // Check Answer
@@ -113,13 +124,15 @@ function gameOver() {
     acceptingInput = false;
 
     h2.innerHTML =
-        `Game Over! Your score was <b>${score}</b><br>Press any key to restart`;
+        `Game Over! Your score was <b>${score}</b><br>Press any key or tap Start Game`;
 
     document.body.style.backgroundColor = "red";
 
     setTimeout(() => {
         document.body.style.backgroundColor = "#f5f5f5";
     }, 150);
+
+    startBtn.style.display = "inline-block";
 
     reset();
 }
